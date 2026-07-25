@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pathwise
 
 AI-powered career guidance platform — resume parsing, skill gap analysis, job matching, mock interviews, and career counseling.
@@ -76,3 +77,7 @@ See `server/.env.example` and `client/.env.example`.
 ## License
 
 MIT
+=======
+# CareerForge-AI---Career-Build-Platform
+AI-powered platform that helps users navigate their careers with data-driven, personalized guidance. It analyzes resumes, identifies skill gaps, recommends career paths, generates tailored resume content, and simulates mock interviews — all powered by LLMs and retrieval-augmented generation (RAG)
+>>>>>>> 9c26be743cf07f36b9c575c2c7a65a89aafb2c7a
