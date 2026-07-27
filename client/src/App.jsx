@@ -1,8 +1,9 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoadingSpinner from './components/LoadingSpinner';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -15,12 +16,15 @@ import MockInterview from './pages/MockInterview';
 import CareerChat from './pages/CareerChat';
 import Profile from './pages/Profile';
 
-function AppLayout({ children }) {
+// Shared Layout for all protected pages
+function ProtectedLayout() {
   return (
-    <>
+    <ProtectedRoute>
       <Navbar />
-      <main>{children}</main>
-    </>
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
+    </ProtectedRoute>
   );
 }
 
@@ -31,84 +35,26 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
-      <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+      {/* Public / Unauthenticated Routes */}
+      <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
+      <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
 
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <AppLayout><Dashboard /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/resume"
-        element={
-          <ProtectedRoute>
-            <AppLayout><ResumeUpload /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/recommendations"
-        element={
-          <ProtectedRoute>
-            <AppLayout><Recommendations /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/skill-gap"
-        element={
-          <ProtectedRoute>
-            <AppLayout><SkillGap /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/cover-letter"
-        element={
-          <ProtectedRoute>
-            <AppLayout><CoverLetter /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/market"
-        element={
-          <ProtectedRoute>
-            <AppLayout><MarketInsights /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/interview"
-        element={
-          <ProtectedRoute>
-            <AppLayout><MockInterview /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/chat"
-        element={
-          <ProtectedRoute>
-            <AppLayout><CareerChat /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <AppLayout><Profile /></AppLayout>
-          </ProtectedRoute>
-        }
-      />
+      {/* Protected Routes inside Shared Layout */}
+      <Route element={<ProtectedLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/resume" element={<ResumeUpload />} />
+        <Route path="/recommendations" element={<Recommendations />} />
+        <Route path="/skill-gap" element={<SkillGap />} />
+        <Route path="/cover-letter" element={<CoverLetter />} />
+        <Route path="/market" element={<MarketInsights />} />
+        <Route path="/interview" element={<MockInterview />} />
+        <Route path="/chat" element={<CareerChat />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
 
-      <Route path="/" element={<Navigate to={user ? '/dashboard' : '/login'} />} />
-      <Route path="*" element={<Navigate to="/" />} />
+      {/* Fallback & Root Redirects */}
+      <Route path="/" element={<Navigate to={user ? "/dashboard" : "/login"} replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
