@@ -18,3 +18,4 @@ Commit 16: feat: integrate job match view on dashboard - 2026-08-20T17:10:33.546
 Commit 17: feat: add mobile toggle drawer to navigation bar - 2026-08-20T17:10:33.669Z
 Commit 18: refactor: harden vectorDb offline database resilience - 2026-08-20T17:10:33.789Z
 Commit 19: test: add integration test suite for server endpoints - 2026-08-20T17:10:33.909Z
+Commit 20: docs: update deployment instructions in README.md - 2026-08-20T17:10:34.034Z
