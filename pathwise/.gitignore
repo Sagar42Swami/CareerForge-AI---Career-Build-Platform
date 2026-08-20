@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+jspm_packages/
+web_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Build / tooling
+dist/
+build/
+.next/
+out/
+.vite/
+coverage/
+*.log
+*.tgz
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Runtime / caches
+.npm/
+.cache/
+.parcel-cache/
+.pnpm-store/
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+
+# Uploads
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Chroma
+chroma_data/
