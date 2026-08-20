@@ -14,3 +14,4 @@ Commit 12: feat: integrate local skill gap analysis - 2026-08-20T17:10:33.057Z
 Commit 13: feat: implement cover letter generation service - 2026-08-20T17:10:33.180Z
 Commit 14: feat: connect cover letter generator to frontend UI - 2026-08-20T17:10:33.299Z
 Commit 15: feat: design semantic job matching with fallback logic - 2026-08-20T17:10:33.424Z
+Commit 16: feat: integrate job match view on dashboard - 2026-08-20T17:10:33.546Z
